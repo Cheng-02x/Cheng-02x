@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英语陪伴官 - 单词学习</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 头部 -->
+        <header class="header">
+            <h1>📚 英语陪伴官</h1>
+            <p class="subtitle">English Learning Companion</p>
+        </header>
+
+        <!-- 主界面 -->
+        <main class="main-content">
+            <!-- 词书选择界面 -->
+            <section id="book-selection" class="section active">
+                <h2>选择词书</h2>
+                <div class="book-list">
+                    <div class="book-card" data-book="cet4">
+                        <h3>📖 四级高频词</h3>
+                        <p> CET-4 High Frequency Words</p>
+                        <div class="progress-bar">
+                            <div class="progress" id="cet4-progress" style="width: 0%"></div>
+                        </div>
+                        <p class="progress-text"><span id="cet4-learned">0</span> / <span id="cet4-total">0</span> 已学</p>
+                    </div>
+                    <div class="book-card" data-book="cet6">
+                        <h3>📗 六级高频词</h3>
+                        <p> CET-6 High Frequency Words</p>
+                        <div class="progress-bar">
+                            <div class="progress" id="cet6-progress" style="width: 0%"></div>
+                        </div>
+                        <p class="progress-text"><span id="cet6-learned">0</span> / <span id="cet6-total">0</span> 已学</p>
+                    </div>
+                    <div class="book-card" data-book="ielts">
+                        <h3>📘 雅思核心词</h3>
+                        <p> IELTS Core Vocabulary</p>
+                        <div class="progress-bar">
+                            <div class="progress" id="ielts-progress" style="width: 0%"></div>
+                        </div>
+                        <p class="progress-text"><span id="ielts-learned">0</span> / <span id="ielts-total">0</span> 已学</p>
+                    </div>
+                </div>
+                
+                <!-- 统计卡片 -->
+                <div class="stats-card">
+                    <div class="stat-item">
+                        <span class="stat-number" id="total-learned">0</span>
+                        <span class="stat-label">已背单词</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="study-days">0</span>
+                        <span class="stat-label">打卡天数</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="difficult-count">0</span>
+                        <span class="stat-label">生词本</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 单词卡片学习界面 -->
+            <section id="word-learning" class="section">
+                <div class="learning-header">
+                    <button class="back-btn" onclick="showSection('book-selection')">← 返回</button>
+                    <span class="learning-progress">进度：<span id="current-progress">1/100</span></span>
+                </div>
+                
+                <div class="word-card">
+                    <div class="word-main">
+                        <h2 class="word-text" id="word-text">example</h2>
+                        <p class="word-phonetic" id="word-phonetic">/ɪgˈzæmpəl/</p>
+                        <button class="sound-btn" onclick="playSound()">
+                            🔊 发音
+                        </button>
+                    </div>
+                    
+                    <div class="word-meaning">
+                        <p class="meaning-cn" id="meaning-cn">n. 例子；榜样</p>
+                        <p class="meaning-en" id="meaning-en">a thing characteristic of its kind or illustrating a general rule</p>
+                    </div>
+                    
+                    <div class="word-example">
+                        <h4>📝 例句</h4>
+                        <p id="example-sentence">This is a good example of how music can bring people together.</p>
+                        <p class="example-translation" id="example-translation">这是音乐如何将人们聚集在一起的一个好例子。</p>
+                    </div>
+                    
+                    <div class="word-collocations" id="collocations-area">
+                        <h4>💡 常用搭配</h4>
+                        <p id="collocations">for example 例如 | set an example 树立榜样</p>
+                    </div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button class="btn btn-difficult" onclick="markAsDifficult()">
+                        ❌ 不认识
+                    </button>
+                    <button class="btn btn-known" onclick="markAsKnown()">
+                        ✅ 认识
+                    </button>
+                </div>
+            </section>
+
+            <!-- 生词本复习界面 -->
+            <section id="difficult-review" class="section">
+                <div class="learning-header">
+                    <button class="back-btn" onclick="showSection('book-selection')">← 返回</button>
+                    <h2>📕 生词本复习</h2>
+                </div>
+                
+                <div id="difficult-list" class="difficult-list">
+                    <!-- 动态生成生词列表 -->
+                </div>
+                
+                <div id="no-difficult" class="empty-state" style="display: none;">
+                    <p>🎉 太棒了！生词本是空的</p>
+                    <p>继续学习新单词吧！</p>
+                </div>
+            </section>
+
+            <!-- 翻译界面 -->
+            <section id="translation" class="section">
+                <div class="translation-header">
+                    <h2>🌐 智能翻译</h2>
+                    <p class="translation-subtitle">Intelligent Translation</p>
+                </div>
+
+                <!-- 翻译方向选择 -->
+                <div class="translation-direction">
+                    <button class="direction-btn active" id="zh-en-btn" onclick="setDirection('zh-en')">
+                        中译英
+                    </button>
+                    <span class="direction-arrow">⇄</span>
+                    <button class="direction-btn" id="en-zh-btn" onclick="setDirection('en-zh')">
+                        英译中
+                    </button>
+                </div>
+
+                <!-- 输入区域 -->
+                <div class="input-area">
+                    <textarea 
+                        id="input-text" 
+                        placeholder="请输入要翻译的内容...&#10;支持单句、多段落文本&#10;长文本会自动逐句拆分"
+                        rows="6"
+                    ></textarea>
+                    <div class="input-actions">
+                        <button class="clear-btn" onclick="clearInput()">🗑️ 清空</button>
+                        <span class="char-count"><span id="char-count">0</span> 字符</span>
+                    </div>
+                </div>
+
+                <!-- 翻译按钮 -->
+                <button class="translate-btn" onclick="translateText()">
+                    🚀 开始翻译
+                </button>
+
+                <!-- 翻译结果 -->
+                <div id="translation-result" class="translation-result" style="display: none;">
+                    <div class="result-header">
+                        <h3>📋 翻译结果</h3>
+                        <button class="copy-btn" onclick="copyResult()">📋 复制译文</button>
+                    </div>
+                    
+                    <div id="result-content" class="result-content">
+                        <!-- 动态生成翻译结果 -->
+                    </div>
+                </div>
+
+                <!-- 翻译提示 -->
+                <div class="translation-tips">
+                    <h4>💡 使用提示</h4>
+                    <ul>
+                        <li>支持单句、多段落文本，长文本也会逐句拆分展示</li>
+                        <li>译文参考四六级答题标准，可直接用于翻译练习与仿写</li>
+                        <li>原文与译文逐行对应，便于对照学习</li>
+                        <li>点击 🔊 可听取英文发音</li>
+                    </ul>
+                </div>
+            </section>
+        </main>
+
+        <!-- 游戏选择界面 -->
+        <section id="game-selection" class="section">
+            <h2>🎮 单词游戏</h2>
+            <div class="game-list">
+                <div class="game-card" onclick="startSnakeGame('cet4')">
+                    <div class="game-icon">🐍</div>
+                    <h3>单词蛇 - 四级</h3>
+                    <p>CET-4 Word Snake</p>
+                    <p class="game-desc">边玩边背四级高频词</p>
+                </div>
+                <div class="game-card" onclick="startSnakeGame('cet6')">
+                    <div class="game-icon">🐍</div>
+                    <h3>单词蛇 - 六级</h3>
+                    <p>CET-6 Word Snake</p>
+                    <p class="game-desc">边玩边背六级高频词</p>
+                </div>
+            </div>
+            
+            <!-- 游戏说明 -->
+            <div class="game-rules">
+                <h3>📖 游戏规则</h3>
+                <div class="rule-item">
+                    <span class="rule-icon">🎯</span>
+                    <p>根据顶部中文释义，吃掉对应的英文单词</p>
+                </div>
+                <div class="rule-item">
+                    <span class="rule-icon">✅</span>
+                    <p><span class="symbol-correct">◎</span> 正确单词 - 吃了得分 + 蛇变长</p>
+                </div>
+                <div class="rule-item">
+                    <span class="rule-icon">❌</span>
+                    <p><span class="symbol-wrong">○</span> 干扰单词 - 吃了扣生命</p>
+                </div>
+                <div class="rule-item">
+                    <span class="rule-icon">💀</span>
+                    <p>撞墙/撞自己/生命归 0 = 游戏结束</p>
+                </div>
+                <div class="rule-item">
+                    <span class="rule-icon">🎮</span>
+                    <p><span class="key-btn">W</span>上 <span class="key-btn">A</span>左 <span class="key-btn">S</span>下 <span class="key-btn">D</span>右 <span class="key-btn">Q</span>退出</p>
+                </div>
+            </div>
+            
+            <button class="back-home-btn" onclick="showSection('book-selection')">← 返回首页</button>
+        </section>
+
+        <!-- 单词蛇游戏界面 -->
+        <section id="snake-game" class="section">
+            <div class="game-header">
+                <button class="back-btn" onclick="exitGame()">← 退出</button>
+                <div class="game-info">
+                    <span class="game-score">🏆 得分：<span id="snake-score">0</span></span>
+                    <span class="game-lives">❤️ 生命：<span id="snake-lives">3</span></span>
+                </div>
+            </div>
+            
+            <!-- 当前题目 -->
+            <div class="word-question">
+                <p class="question-label">📝 请吃掉对应单词：</p>
+                <p class="question-meaning" id="question-meaning">n. 能力；才能</p>
+            </div>
+            
+            <!-- 游戏画布 -->
+            <div class="game-board" id="game-board">
+                <canvas id="snake-canvas" width="448" height="448"></canvas>
+            </div>
+            
+            <!-- 移动端控制按钮 -->
+            <div class="mobile-controls">
+                <div class="game-actions">
+                    <button class="action-btn" onclick="exitGame()">MENU</button>
+                    <button class="action-btn" onclick="togglePause()">PAUSE</button>
+                </div>
+                <div class="dpad-container">
+                    <button class="control-btn" id="btn-up">△</button>
+                    <button class="control-btn" id="btn-left">◁</button>
+                    <button class="control-btn" id="btn-down">▽</button>
+                    <button class="control-btn" id="btn-right">▷</button>
+                </div>
+            </div>
+            
+            <!-- 游戏结束弹窗 -->
+            <div id="game-over-modal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <h2 id="game-over-title">🎮 游戏结束</h2>
+                    <div class="final-score">
+                        <p>最终得分</p>
+                        <p class="score-number" id="final-score">0</p>
+                    </div>
+                    <div class="game-stats">
+                        <div class="stat">
+                            <span class="stat-label">正确单词</span>
+                            <span class="stat-value" id="correct-count">0</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">错误单词</span>
+                            <span class="stat-value" id="wrong-count">0</span>
+                        </div>
+                    </div>
+                    <div class="modal-buttons">
+                        <button class="btn btn-restart" onclick="restartGame()">🔄 再来一局</button>
+                        <button class="btn btn-exit" onclick="exitGame()">🏠 返回菜单</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 底部导航 -->
+        <nav class="bottom-nav">
+            <button class="nav-btn" onclick="showSection('book-selection')">
+                📚 词书
+            </button>
+            <button class="nav-btn" onclick="showSection('difficult-review')">
+                📕 生词本
+            </button>
+            <button class="nav-btn" onclick="showSection('game-selection')">
+                🎮 游戏
+            </button>
+            <button class="nav-btn" onclick="showSection('translation')">
+                🌐 翻译
+            </button>
+        </nav>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="translation-data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

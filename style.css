@@ -1,0 +1,1080 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+.app-container {
+    max-width: 480px;
+    margin: 0 auto;
+    background: #fff;
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 70px;
+}
+
+/* 头部 */
+.header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* 主内容区 */
+.main-content {
+    padding: 20px;
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+/* 词书选择 */
+.book-list {
+    margin-bottom: 20px;
+}
+
+.book-card {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.book-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+    border-color: #667eea;
+}
+
+.book-card h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.book-card p {
+    color: #666;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.progress-bar {
+    background: #e0e0e0;
+    border-radius: 10px;
+    height: 8px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.progress {
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    font-size: 12px;
+    color: #999;
+}
+
+/* 统计卡片 */
+.stats-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    color: white;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.stat-label {
+    font-size: 12px;
+    opacity: 0.9;
+}
+
+/* 学习界面 */
+.learning-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.back-btn {
+    background: #f0f0f0;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #666;
+}
+
+.learning-progress {
+    color: #666;
+    font-size: 14px;
+}
+
+/* 单词卡片 */
+.word-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 30px 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    border: 1px solid #e0e0e0;
+}
+
+.word-main {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.word-text {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.word-phonetic {
+    color: #999;
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-family: 'Arial', sans-serif;
+}
+
+.sound-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: transform 0.2s;
+}
+
+.sound-btn:hover {
+    transform: scale(1.05);
+}
+
+.word-meaning {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.meaning-cn {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.meaning-en {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+}
+
+.word-example {
+    background: #fff8e6;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border-left: 4px solid #ffc107;
+}
+
+.word-example h4 {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+#example-sentence {
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+.example-translation {
+    color: #999;
+    font-size: 14px;
+}
+
+.word-collocations {
+    background: #e8f5e9;
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 4px solid #4caf50;
+}
+
+.word-collocations h4 {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+#collocations {
+    color: #333;
+    font-size: 14px;
+}
+
+/* 操作按钮 */
+.action-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.btn-difficult {
+    background: #ffebee;
+    color: #e53935;
+}
+
+.btn-known {
+    background: #e8f5e9;
+    color: #43a047;
+}
+
+/* 底部导航 */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 480px;
+    background: white;
+    display: flex;
+    border-top: 1px solid #e0e0e0;
+    padding: 10px 0;
+}
+
+.nav-btn {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 10px;
+    font-size: 14px;
+    color: #999;
+    cursor: pointer;
+}
+
+.nav-btn.active {
+    color: #667eea;
+}
+
+/* 生词本列表 */
+.difficult-list {
+    margin-bottom: 20px;
+}
+
+.difficult-item {
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.difficult-word {
+    flex: 1;
+}
+
+.difficult-word h4 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.difficult-word p {
+    font-size: 13px;
+    color: #999;
+}
+
+.difficult-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.action-small-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.btn-mastered {
+    background: #e8f5e9;
+    color: #43a047;
+}
+
+.btn-pronounce {
+    background: #f0f0f0;
+    color: #666;
+}
+
+/* 空状态 */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #999;
+}
+
+.empty-state p {
+    margin-bottom: 10px;
+}
+
+/* 翻译界面 */
+.translation-header {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+    color: white;
+}
+
+.translation-header h2 {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.translation-subtitle {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* 翻译方向选择 */
+.translation-direction {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.direction-btn {
+    flex: 1;
+    max-width: 120px;
+    padding: 12px 20px;
+    border: 2px solid #667eea;
+    background: white;
+    color: #667eea;
+    border-radius: 25px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.direction-btn.active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: transparent;
+}
+
+.direction-btn:hover {
+    transform: scale(1.05);
+}
+
+.direction-arrow {
+    font-size: 20px;
+    color: #667eea;
+}
+
+/* 输入区域 */
+.input-area {
+    margin-bottom: 15px;
+}
+
+#input-text {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 15px;
+    font-family: inherit;
+    resize: vertical;
+    transition: border-color 0.3s ease;
+}
+
+#input-text:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.input-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+    padding: 0 5px;
+}
+
+.clear-btn {
+    background: #f0f0f0;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    color: #666;
+}
+
+.clear-btn:hover {
+    background: #e0e0e0;
+}
+
+.char-count {
+    font-size: 13px;
+    color: #999;
+}
+
+/* 翻译按钮 */
+.translate-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-bottom: 20px;
+}
+
+.translate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.translate-btn:active {
+    transform: translateY(0);
+}
+
+/* 翻译结果 */
+.translation-result {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+}
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.result-header h3 {
+    font-size: 16px;
+    color: #333;
+}
+
+.copy-btn {
+    background: #f0f0f0;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    color: #666;
+}
+
+.copy-btn:hover {
+    background: #e0e0e0;
+}
+
+.result-content {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.translation-pair {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-left: 4px solid #667eea;
+}
+
+.translation-pair:last-child {
+    margin-bottom: 0;
+}
+
+.original-text {
+    color: #333;
+    font-size: 15px;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.translated-text {
+    color: #667eea;
+    font-size: 15px;
+    line-height: 1.6;
+    padding-top: 10px;
+    border-top: 1px dashed #e0e0e0;
+}
+
+.translated-text .sound-icon {
+    cursor: pointer;
+    margin-left: 8px;
+    font-size: 14px;
+}
+
+/* 翻译提示 */
+.translation-tips {
+    background: #fff8e6;
+    border-radius: 12px;
+    padding: 15px;
+    border-left: 4px solid #ffc107;
+}
+
+.translation-tips h4 {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.translation-tips ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.translation-tips li {
+    color: #666;
+    font-size: 13px;
+    padding: 5px 0;
+    padding-left: 20px;
+    position: relative;
+}
+
+.translation-tips li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #4caf50;
+}
+
+/* 加载动画 */
+.loading {
+    text-align: center;
+    padding: 30px;
+    color: #667eea;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f0f0f0;
+    border-top-color: #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 15px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* 响应式调整 */
+@media (min-width: 768px) {
+    .translation-direction {
+        max-width: 400px;
+        margin: 0 auto 20px;
+    }
+}
+
+/* 响应式设计 */
+@media (min-width: 768px) {
+    .app-container {
+        margin: 20px auto;
+        min-height: calc(100vh - 40px);
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    }
+    
+    .bottom-nav {
+        border-radius: 0 0 20px 20px;
+    }
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.word-card {
+    animation: fadeIn 0.3s ease;
+}
+
+/* ==================== 游戏选择界面 ==================== */
+.game-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.game-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 16px;
+    padding: 20px 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.game-icon {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.game-card h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.game-card p {
+    font-size: 12px;
+    opacity: 0.9;
+    margin-bottom: 3px;
+}
+
+.game-desc {
+    font-size: 11px !important;
+    opacity: 0.8 !important;
+}
+
+/* 游戏规则 */
+.game-rules {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.game-rules h3 {
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+.rule-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.rule-item:last-child {
+    border-bottom: none;
+}
+
+.rule-icon {
+    font-size: 20px;
+    margin-right: 10px;
+    min-width: 25px;
+}
+
+.rule-item p {
+    font-size: 13px;
+    color: #666;
+    margin: 0;
+}
+
+.symbol-correct {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.symbol-wrong {
+    color: #f44336;
+    font-weight: bold;
+}
+
+.key-btn {
+    display: inline-block;
+    background: #667eea;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    margin: 0 2px;
+    font-weight: bold;
+}
+
+.back-home-btn {
+    width: 100%;
+    padding: 12px;
+    background: #f0f0f0;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.back-home-btn:hover {
+    background: #e0e0e0;
+}
+
+/* ==================== 单词蛇游戏界面 ==================== */
+#snake-game {
+    padding: 10px;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    background: #5c6bc0;
+    border-radius: 8px;
+}
+
+.game-info {
+    display: flex;
+    gap: 15px;
+}
+
+.game-score, .game-lives {
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+}
+
+/* 题目区域 */
+.word-question {
+    background: #5c6bc0;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.question-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 5px;
+    font-weight: normal;
+}
+
+.question-meaning {
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+    line-height: 1.4;
+}
+
+/* 游戏画布 */
+.game-board {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    border: 2px solid #e0e0e0;
+    overflow: hidden;
+}
+
+#snake-canvas {
+    border: none;
+    border-radius: 6px;
+    background: #ffffff;
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/* 移动端控制按钮 */
+.mobile-controls {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+    padding: 20px;
+    background: #f5f5f5;
+    border-radius: 12px;
+}
+
+.game-actions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 10px;
+}
+
+.action-btn {
+    padding: 8px 20px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background: white;
+    color: #666;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.action-btn:active {
+    background: #e0e0e0;
+}
+
+.dpad-container {
+    display: grid;
+    grid-template-areas: 
+        ". up ."
+        "left . right"
+        ". down .";
+    gap: 5px;
+}
+
+.control-btn {
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 10px;
+    background: #5c6bc0;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.control-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+#btn-up { grid-area: up; }
+#btn-down { grid-area: down; }
+#btn-left { grid-area: left; }
+#btn-right { grid-area: right; }
+
+@media (max-width: 768px) {
+    .mobile-controls {
+        display: flex;
+    }
+}
+
+/* 游戏结束弹窗 */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    max-width: 320px;
+    width: 90%;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.final-score {
+    margin-bottom: 20px;
+}
+
+.final-score p:first-child {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.score-number {
+    font-size: 48px;
+    font-weight: bold;
+    color: #667eea;
+}
+
+.game-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 25px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.game-stats .stat {
+    text-align: center;
+}
+
+.game-stats .stat-label {
+    display: block;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.game-stats .stat-value {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.game-stats .stat-value:nth-child(2) {
+    color: #4CAF50;
+}
+
+.game-stats .stat-value:last-child {
+    color: #f44336;
+}
+
+.modal-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-restart {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.btn-restart:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-exit {
+    background: #f0f0f0;
+    color: #666;
+}
+
+.btn-exit:hover {
+    background: #e0e0e0;
+}
+
+/* 游戏内提示 */
+.game-toast {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 10px;
+    font-size: 16px;
+    z-index: 999;
+    animation: fadeIn 0.3s ease;
+}
+
+.game-toast.correct {
+    background: rgba(76, 175, 80, 0.9);
+}
+
+.game-toast.wrong {
+    background: rgba(244, 67, 54, 0.9);
+}
